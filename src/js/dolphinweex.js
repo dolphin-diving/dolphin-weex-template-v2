@@ -11,6 +11,8 @@ const app = weex.requireModule('bridgeModule') //仅支持在native中使用
 
 import bridgeCore from 'bridgecore'
 import util from './util.js'
+import i18n from './i18n.js'
+import storageModule from './storage'
 import { DofMinibar } from 'dolphin-weex-ui'
 import { baseURL, ENV } from './config.js'
 
@@ -136,8 +138,15 @@ let dolphinweex = {
       components: {
         'dof-minibar': DofMinibar
       },
+      data: () => ({
+        locale: 'en_US' //设置默认语言：zh_CN|en_US
+      }),
       created() {
-        // this.$toast('dolphinweex')
+        // 通用钩子
+      },
+      async mounted() {
+        let current_locale = await storageModule.getStorage('locale')
+        this.locale = current_locale || 'en_US'
       }
     })
     Vue.prototype.$native = bridgeCore
@@ -189,6 +198,8 @@ let dolphinweex = {
     Vue.prototype.$showSuccess = bridgeCore.showSuccess
 
     Vue.prototype.$showError = bridgeCore.showError
+    Vue.prototype.$t = i18n.t
+    Vue.prototype.$storage = storageModule
   }
 }
 

@@ -35,10 +35,17 @@
       ></dof-button>
       <dof-button
         class="margin-top-80"
+        text="i18n示例"
+        type="primary"
+        size="big"
+        @dofButtonClicked="jumpTo('i18n-demo')"
+      ></dof-button>
+      <dof-button
+        class="margin-top-80"
         text="快速查看"
         type="primary"
         size="big"
-        @dofButtonClicked="jumpTo"
+        @dofButtonClicked="jumpTo('welcome')"
       ></dof-button>
     </div>
     <div class="footer">
@@ -74,9 +81,8 @@ module.exports = {
     this.subTitle = 'Midea 模版项目'
   },
   methods: {
-    jumpTo() {
-      let url = 'welcome.js'
-      this.$push(url)
+    jumpTo(url) {
+      this.$push(`${url}.js`)
     },
     minibarRightButtonClick() {
       this.$native.reload()

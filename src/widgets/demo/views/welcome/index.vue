@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <dof-minibar
-      title="欢迎页"
+      :title="$t('title')"
       backgroundColor="transparent"
       textColor="#404040"
       @dofMinibarLeftButtonClicked="minibarLeftButtonClick"
@@ -35,10 +35,10 @@
       </div>
     </div>
     <div class="show-welcome margin-top-40">
-      <text class="tip-text" :style="{ paddingLeft: '30px' }">插件demo:下载sample 模版</text>
-      <text class="tip-text">使用dolphin-weex-cli 脚手架的 </text>
-      <text class="tip-text">$: dolphin c</text>
-      <text class="tip-text">选择 sample</text>
+      <text class="tip-text" :style="{ paddingLeft: '30px' }">{{ $t('cli.name') }}</text>
+      <text class="tip-text">{{ $t('cli.step1') }}</text>
+      <text class="tip-text">{{ $t('cli.step2') }}</text>
+      <text class="tip-text">{{ $t('cli.step3') }}</text>
     </div>
   </div>
 </template>
@@ -48,6 +48,7 @@ import { DofCell2, DofMinibar } from 'dolphin-weex-ui'
 const lottieModule = weex.requireModule('lottieModule')
 import circle from '../../assets/lottie/circle.json'
 import egg from '../../assets/lottie/color-egg.json'
+import lang from '../../assets/lang/welcome.json'
 
 export default {
   components: {
@@ -59,7 +60,8 @@ export default {
       rightButton: './assets/image/header/refresh.png',
       word: 'it is time to develop plugins yourself',
       lottieData: '',
-      isLottieShow: false
+      isLottieShow: false,
+      i18nData: lang
     }
   },
   created() {},

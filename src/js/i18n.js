@@ -1,5 +1,3 @@
-import storageModule from './storage'
-
 export default {
   t(target) {
     try {

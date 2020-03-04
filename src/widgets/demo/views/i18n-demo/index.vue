@@ -30,7 +30,6 @@
 <script>
 import { DofButton } from 'dolphin-weex-ui'
 import lang from '../../assets/lang/i18n-demo.json'
-const storage = weex.requireModule('storage')
 
 export default {
   components: {

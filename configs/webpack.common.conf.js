@@ -171,6 +171,7 @@ const webConfig = getBaseConfig();
 webConfig.entry = Object.assign(webEntry, {
     'vendor': [path.resolve('node_modules/phantom-limb/index.js')]
 });
+webConfig.output.path = helper.rootNode(`/dist/${project_category_name}_web`);
 webConfig.output.filename = '[name].web.js';
 webConfig.module.rules[1].use.push(
     {

@@ -5,6 +5,7 @@ const webpack = require('webpack');
 
 const config = require('./config');
 const helper = require('./helper');
+const project_category_name = process.env.CATE_NAME || 'base';
 
 /**
  * Webpack Plugins
@@ -78,7 +79,7 @@ const webConfig = webpackMerge(commonConfig[0], {
      *
      * See: http://webpack.github.io/docs/configuration.html#output-path
      */
-    path: helper.rootNode('./dist'),
+    path: helper.rootNode(`/dist/${project_category_name}_web`),
     /**
      * Specifies the name of each output file on disk.
      * IMPORTANT: You must not specify an absolute path here!
@@ -102,7 +103,7 @@ const webConfig = webpackMerge(commonConfig[0], {
   plugins: [
     /**
      * Plugin: webpack.DefinePlugin
-     * Description: The DefinePlugin allows you to create global constants which can be configured at compile time. 
+     * Description: The DefinePlugin allows you to create global constants which can be configured at compile time.
      *
      * See: https://webpack.js.org/plugins/define-plugin/
      */

@@ -1,12 +1,7 @@
 /**
  * 框架核心方法
  */
-const modal = weex.requireModule('modal')
-const animation = weex.requireModule('animation')
-const navigator = weex.requireModule('navigator')
-const navigatorEx = weex.requireModule('NavigatorExModule') //仅支持在native中使用
 const stream = weex.requireModule('stream')
-const meta = weex.requireModule('meta')
 const app = weex.requireModule('bridgeModule') //仅支持在native中使用
 
 import bridgeCore from 'bridgecore'

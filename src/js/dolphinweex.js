@@ -144,9 +144,18 @@ let dolphinweex = {
       created() {
         // 通用钩子
       },
-      async mounted() {
-        let current_locale = await storageModule.getStorage('locale')
-        this.locale = current_locale || 'en_US'
+      mounted() {
+        if (this.i18nData) {
+          this.setDeviceLanguage().catch(err => {
+            this.locale = 'en_US'
+          })
+        }
+      },
+      methods: {
+        async setDeviceLanguage() {
+          let current_locale = await storageModule.getStorage('locale')
+          this.locale = current_locale || 'en_US'
+        }
       }
     })
     Vue.prototype.$native = bridgeCore

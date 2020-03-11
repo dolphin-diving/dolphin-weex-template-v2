@@ -83,9 +83,7 @@ module.exports = {
       this.$reload()
     },
     toast() {
-      const flag = this.$util.getPageParams()
-
-      this.$toast(weex.config.bundleUrl)
+      this.$toast('hello, dolphinWeex')
       this.$native.hapticFeedback()
     },
     alert() {

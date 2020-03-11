@@ -64,7 +64,7 @@ module.exports = {
       })
     },
     minibarRightButtonClick() {
-      this.$native.reload()
+      this.$reload()
     }
   },
   components: {},

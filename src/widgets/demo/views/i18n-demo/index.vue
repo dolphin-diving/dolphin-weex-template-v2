@@ -51,7 +51,7 @@ export default {
   },
   methods: {
     minibarRightButtonClick() {
-      this.$native.reload()
+      this.$reload()
     },
     changleLocale() {
       let lang = this.locale === 'zh_CN' ? 'en_US' : 'zh_CN'

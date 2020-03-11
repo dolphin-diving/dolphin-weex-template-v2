@@ -2,17 +2,9 @@
  * 框架核心方法
  */
 const stream = weex.requireModule('stream')
-<<<<<<< HEAD
-const app = weex.requireModule('bridgeModule') //仅支持在native中使用
-
-import bridgeCore from 'bridgecore'
-import util from './util.js'
-import i18n from './i18n.js'
 import storageModule from './storage'
-import { DofMinibar } from 'dolphin-weex-ui'
-=======
+import i18n from './i18n'
 import { DofMinibar, Core, Utils } from 'dolphin-weex-ui'
->>>>>>> e28482c5dcad1e6492d0679edb7b557216408e6e
 import { baseURL, ENV } from './config.js'
 
 let dolphinweex = {
@@ -164,31 +156,10 @@ let dolphinweex = {
     Vue.prototype.$post = that.post
 
     Vue.prototype.$get = that.get
-<<<<<<< HEAD
 
-    Vue.prototype.$formatDate = util.formatDate
-
-    Vue.prototype.$isIPad = util.isIPad
-
-    Vue.prototype.$isIPhoneX = util.isIPhoneX
-
-    Vue.prototype.$isIPhone = util.isIPhone
-
-    Vue.prototype.$isAndroid = util.isAndroid
-
-    Vue.prototype.$fixStyle = util.fixStyle
-
-    Vue.prototype.$showLoading = bridgeCore.showLoading
-
-    Vue.prototype.$hideLoading = bridgeCore.hideLoading
-
-    Vue.prototype.$showSuccess = bridgeCore.showSuccess
-
-    Vue.prototype.$showError = bridgeCore.showError
     Vue.prototype.$t = i18n.t
+
     Vue.prototype.$storage = storageModule
-=======
->>>>>>> e28482c5dcad1e6492d0679edb7b557216408e6e
   }
 }
 

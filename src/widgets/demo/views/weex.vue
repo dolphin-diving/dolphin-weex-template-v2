@@ -85,11 +85,12 @@ module.exports = {
       let url = 'welcome.js'
       this.$push(url)
     },
+    minibarLeftButtonClick() {},
     minibarRightButtonClick() {
-      this.$native.reload()
+      this.$reload()
     },
     toast() {
-      this.$toast(this.$baseURL)
+      this.$toast('hello, dolphinWeex')
       this.$native.hapticFeedback()
     },
     alert() {

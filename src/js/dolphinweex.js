@@ -2,6 +2,8 @@
  * 框架核心方法
  */
 const stream = weex.requireModule('stream')
+import storageModule from './storage'
+import i18n from './i18n'
 import { DofMinibar, Core, Utils } from 'dolphin-weex-ui'
 import { baseURL, ENV } from './config.js'
 
@@ -154,6 +156,10 @@ let dolphinweex = {
     Vue.prototype.$post = that.post
 
     Vue.prototype.$get = that.get
+
+    Vue.prototype.$t = i18n.t
+
+    Vue.prototype.$storage = storageModule
   }
 }
 

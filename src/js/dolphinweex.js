@@ -2,58 +2,10 @@
  * 框架核心方法
  */
 const stream = weex.requireModule('stream')
-const app = weex.requireModule('bridgeModule') //仅支持在native中使用
-
-import bridgeCore from 'bridgecore'
-import util from './util.js'
-import i18n from './i18n.js'
-import storageModule from './storage'
-import { DofMinibar } from 'dolphin-weex-ui'
+import { DofMinibar, Core, Utils } from 'dolphin-weex-ui'
 import { baseURL, ENV } from './config.js'
 
 let dolphinweex = {
-  /**
-   * 发送POST请求
-   * @method post
-   * @param params {object} 请求参数
-   * @param params.url {string} 请求的URL
-   * @param params.headers {object} 请求头, Content-Type默认值是 application/x-www-form-urlencoded
-   * @param params.type {string} 响应类型, json(默认),text
-   * @param params.data {object} 请求数据，带到 HTTP body中
-   * @param params.timeout {int} 超时时间 默认30s
-   * @return {Promise.<TResult>} 成功: resolve(data, status, statusText), 失败: reject(status, statusText)
-   */
-  post(params) {
-    let url = params.url || ''
-    let headers = params.headers || {}
-    let data = params.data
-    let type = params.type || 'json'
-    if (typeof data == 'object') {
-      data = JSON.stringify(data)
-    }
-    // headers["Content-Type"]="application/x-www-form-urlencoded";
-    // headers["Content-Type"]="application/json";
-    return new Promise((resolve, reject) => {
-      stream.fetch(
-        {
-          method: 'POST',
-          type: type,
-          url: url,
-          headers: headers,
-          body: data,
-          timeout: params.timeout || 30000
-        },
-        res => {
-          if (res.status >= 200 && res.status <= 299) {
-            resolve(res.data, res.status, res.statusText, res)
-          } else {
-            reject(res.status, res.statusText)
-          }
-        }
-      )
-    })
-  },
-
   /**
    * 发送GET请求
    * @method get
@@ -104,29 +56,46 @@ let dolphinweex = {
     })
   },
   /**
-   * 获取页面参数(bundleJS),从url查询参数中获取
-   * @method getPageParams
-   * @return {object} 返回json数据
+   * 发送POST请求
+   * @method post
+   * @param params {object} 请求参数
+   * @param params.url {string} 请求的URL
+   * @param params.headers {object} 请求头, Content-Type默认值是 application/x-www-form-urlencoded
+   * @param params.type {string} 响应类型, json(默认),text
+   * @param params.data {object} 请求数据，带到 HTTP body中
+   * @param params.timeout {int} 超时时间 默认30s
+   * @return {Promise.<TResult>} 成功: resolve(data, status, statusText), 失败: reject(status, statusText)
    */
-  getPageParams() {
-    let params = {}
-    let url = weex.config.bundleUrl
-    let index = url.indexOf('?')
-    if (index > 0) {
-      let query = url.substring(index + 1)
-      let temp = query.split('&')
-      let key, value
-      for (var p in temp) {
-        if (temp[p]) {
-          key = temp[p].split('=')[0]
-          value = temp[p].split('=')[1]
-          params[key] = decodeURIComponent(value)
-        }
-      }
+  post(params) {
+    let url = params.url || ''
+    let headers = params.headers || {}
+    let data = params.data
+    let type = params.type || 'json'
+    if (typeof data == 'object') {
+      data = JSON.stringify(data)
     }
-    return params
+    // headers["Content-Type"]="application/x-www-form-urlencoded";
+    // headers["Content-Type"]="application/json";
+    return new Promise((resolve, reject) => {
+      stream.fetch(
+        {
+          method: 'POST',
+          type: type,
+          url: url,
+          headers: headers,
+          body: data,
+          timeout: params.timeout || 30000
+        },
+        res => {
+          if (res.status >= 200 && res.status <= 299) {
+            resolve(res.data, res.status, res.statusText, res)
+          } else {
+            reject(res.status, res.statusText)
+          }
+        }
+      )
+    })
   },
-
   install(Vue, options) {
     let that = dolphinweex
     Vue.mixin({
@@ -153,57 +122,38 @@ let dolphinweex = {
         }
       }
     })
-    Vue.prototype.$native = bridgeCore
+    Vue.prototype.$native = null
+    Vue.prototype.$util = Utils
 
     Vue.prototype.$ENV = ENV
 
     Vue.prototype.$baseURL = baseURL
 
-    Vue.prototype.$alert = bridgeCore.alert
+    Vue.prototype.$alert = Core.alert
 
-    Vue.prototype.$toast = bridgeCore.toast
+    Vue.prototype.$toast = Core.toast
 
-    Vue.prototype.$confirm = bridgeCore.confirm
+    Vue.prototype.$reload = Core.reload
 
-    Vue.prototype.$show = bridgeCore.show
+    Vue.prototype.$confirm = Core.confirm
 
-    Vue.prototype.$hide = bridgeCore.hide
+    Vue.prototype.$show = Core.show
 
-    Vue.prototype.$getContextPath = bridgeCore.getContextPath
+    Vue.prototype.$showSuccess = Core.showSuccess
 
-    Vue.prototype.$push = bridgeCore.push
+    Vue.prototype.$showError = Core.showError
 
-    Vue.prototype.$pop = bridgeCore.pop
+    Vue.prototype.$hide = Core.hide
 
-    Vue.prototype.$close = bridgeCore.close
+    Vue.prototype.$getContextPath = Core.getContextPath
 
-    Vue.prototype.$getPageParams = that.getPageParams
+    Vue.prototype.$push = Core.push
+
+    Vue.prototype.$pop = Core.pop
 
     Vue.prototype.$post = that.post
 
     Vue.prototype.$get = that.get
-
-    Vue.prototype.$formatDate = util.formatDate
-
-    Vue.prototype.$isIPad = util.isIPad
-
-    Vue.prototype.$isIPhoneX = util.isIPhoneX
-
-    Vue.prototype.$isIPhone = util.isIPhone
-
-    Vue.prototype.$isAndroid = util.isAndroid
-
-    Vue.prototype.$fixStyle = util.fixStyle
-
-    Vue.prototype.$showLoading = bridgeCore.showLoading
-
-    Vue.prototype.$hideLoading = bridgeCore.hideLoading
-
-    Vue.prototype.$showSuccess = bridgeCore.showSuccess
-
-    Vue.prototype.$showError = bridgeCore.showError
-    Vue.prototype.$t = i18n.t
-    Vue.prototype.$storage = storageModule
   }
 }
 

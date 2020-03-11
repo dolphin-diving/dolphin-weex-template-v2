@@ -21,8 +21,7 @@
     "debug": "weex debug"
   },
   "dependencies": {
-    "bridgecore": "^0.0.18",
-    "dolphin-weex-ui": "0.0.31",
+    "dolphin-weex-ui": "0.0.41",
     "echarts": "^4.1.0",
     "phantom-limb": "0.0.1",
     "postcss-weex": "^1.0.5",

@@ -78,11 +78,14 @@ module.exports = {
       let url = 'welcome.js'
       this.$push(url)
     },
+    minibarLeftButtonClick() {},
     minibarRightButtonClick() {
-      this.$native.reload()
+      this.$reload()
     },
     toast() {
-      this.$toast(this.$baseURL)
+      const flag = this.$util.getPageParams()
+
+      this.$toast(weex.config.bundleUrl)
       this.$native.hapticFeedback()
     },
     alert() {

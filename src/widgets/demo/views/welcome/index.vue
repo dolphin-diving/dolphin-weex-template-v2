@@ -76,7 +76,7 @@ export default {
   },
   methods: {
     minibarRightButtonClick() {
-      this.$native.reload()
+      this.$reload()
     }
   }
 }

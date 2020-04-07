@@ -11,7 +11,6 @@
   "scripts": {
     "start": "npm run clean:all && npm run serve",
     "serve": "cross-env CATE_NAME=demo webpack-dev-server --env.NODE_ENV=development --progress",
-    "dev": "cross-env CATE_NAME=demo webpack --env.NODE_ENV=common --progress --watch",
     "build": "cross-env CATE_NAME=demo webpack --env.NODE_ENV=common",
     "build:prod": "npm run clean:all && cross-env CATE_NAME=demo webpack --env.NODE_ENV=production && node configs/publish.js",
     "build:prod:web": "cross-env CATE_NAME=demo webpack --env.NODE_ENV=release",

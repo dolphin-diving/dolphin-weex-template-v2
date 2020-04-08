@@ -84,6 +84,7 @@ export default {
           .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(params[k] || ''))
           .join('&')
     }
+
     // mm.toast({ message: isRemote, duration: 2 })
     if (this.isDummy != true && !isRemote) {
       //手机本地页面跳转
@@ -92,6 +93,7 @@ export default {
         // url = weexPath + path;
         let weexPathArray = weexPath.split('/')
         let pathArray = path.split('/')
+
         if (weexPathArray[weexPathArray.length - 2] == pathArray[0]) {
           pathArray.shift()
           if (weexPathArray[weexPathArray.length - 3] == pathArray[0]) {
@@ -104,26 +106,36 @@ export default {
         } else {
           url = weexPath + path
         }
+
         this.runGo(url, options)
       })
     } else if (platform != 'Web') {
       //手机远程weex页面调试跳转
       this.getPath(weexPath => {
+        // let weexPathArray = weexPath.split('/')
+        // let pathArray = path.split('/')
         //weexPath为当前页面目录地址
-        let weexPathArray = weexPath.split('/')
-        let pathArray = path.split('/')
-        if (weexPathArray[weexPathArray.length - 2] == pathArray[0]) {
-          pathArray.shift()
-          if (weexPathArray[weexPathArray.length - 3] == pathArray[0]) {
-            pathArray.shift()
-            if (weexPathArray[weexPathArray.length - 4] == pathArray[0]) {
-              pathArray.shift()
-            }
-          }
-          url = weexPathArray.join('/') + pathArray.join('/')
-        } else {
+        // if (weexPathArray[weexPathArray.length - 2] == pathArray[0]) {
+        //   pathArray.shift()
+        //   if (weexPathArray[weexPathArray.length - 3] == pathArray[0]) {
+        //     pathArray.shift()
+        //     if (weexPathArray[weexPathArray.length - 4] == pathArray[0]) {
+        //       pathArray.shift()
+        //     }
+        //   }
+        //   url = weexPathArray.join('/') + pathArray.join('/')
+        // } else {
+        //   url = weexPath + path  
+        // }
+        if(weex.config.env.platform == 'iOS') {
           url = weexPath + path
+        } else {
+          let weexPathArray = weexPath.indexOf('?') ? weexPath.slice(0,weexPath.indexOf('?')).split('/').slice(0,-1) : weexPath.split('/').slice(0,-1)
+          let pathArray = path.split('/')
+          url = weexPathArray.join('/')+ '/' + pathArray.join('/')
+          // mm.alert({ message: JSON.stringify(url), duration: 5 })
         }
+
         if (url.indexOf('?') != -1) {
           url += '&isDummy=' + isDummy
         } else {
@@ -137,7 +149,6 @@ export default {
     }
   },
   runGo(url, options) {
-    // mm.toast({ message: url, duration: 2 })
     if (!options) {
       options = {
         animated: 'true',
@@ -154,7 +165,7 @@ export default {
     let params = Object.assign(options, {
       url: url
     })
-    // this.toast(params)
+
     navigator.push(params, event => {})
   },
   /*
@@ -327,6 +338,26 @@ export default {
     if (this.isDummy != true) {
       bridgeModule.killKeyboard()
     }
+  },
+
+  /* ^6.3 在线图片转码base64
+        param.url: xxxx, //url为http开头的在线图片
+    */
+  convertImageToBase64(params) {
+    let param = Object.assign(params, {
+      operation: 'convertImageToBase64'
+    })
+    return this.commandInterfaceWrapper(param)
+  },
+
+  /* ^6.3 本地图片转码base64
+        param.filePath: xxxx, //本地路径
+   */
+  convertLocalImageToBase64(params) {
+    let param = Object.assign(params, {
+      operation: 'convertLocalImageToBase64'
+    })
+    return this.commandInterfaceWrapper(param)
   },
   //**********非APP业务接口***************END
 
@@ -1210,17 +1241,83 @@ export default {
     })
     return this.commandInterfaceWrapper(param)
   },
-  /* 选择通讯录的好友，可以获取电话号码，好友信息 */
-  getAddressBookPerson() {
-    let param = {
-      operation: 'getAddressBookPerson'
-    }
+
+  /* 	打开或者关闭电子围栏 */
+  startMonitoringForRegion(params) {
+    /*params =  {
+            enable:xxx, //打开或者关闭电子围栏
+            latitude:xxxx, //纬度
+            longitude:xxxx, //经度
+            sceneld: xxxx, //场景ID
+            deviceld: xxxx, //设备ID
+            tempRadius: xxxx, //温度圈半径
+            preRadius: xxxx, //预启动半径
+            homegroupId: xxxx, //家庭id
+            type: xxxx    // 1:空调（AI智能舒适优化）2:家电（家电忘关）；type字段默认为1
+        }
+        */
+    let param = Object.assign(params, {
+      operation: 'startMonitoringForRegion'
+    })
     return this.commandInterfaceWrapper(param)
   },
 
-  downloadImageWithCookie(params) {
+  /* 选择通讯录的好友，可以获取电话号码，好友信息 */
+  // （5.10后因为安全考虑，APP禁用了手机通讯录功能） 注释了  add by hairong lau
+  /**
+    getAddressBookPerson() {
+        let param = {
+            operation: 'getAddressBookPerson'
+        }
+        return this.commandInterfaceWrapper(param)
+    },
+    **/
+
+  /* 接口失效   add by lau*/
+  /*
+    downloadImageWithCookie(params) {
+        let param = Object.assign(params, {
+            operation: 'downloadImageWithCookie'
+        })
+        return this.commandInterfaceWrapper(param)
+    },
+    */
+
+  /* ^6.2 通过地址返回经纬度信息。  add by hairong */
+  geoCode(params) {
+    /* params =  {
+            city: 城市名,
+            address：具体地址
+        } */
     let param = Object.assign(params, {
-      operation: 'downloadImageWithCookie'
+      operation: 'geoCode'
+    })
+    return this.commandInterfaceWrapper(param)
+  },
+
+  /* ^6.2 地图周边搜索  add by lau */
+  mapPoiNearbySearch(params) {
+    /* params =  {
+            pageIndex: 0，分页
+            pageCapacity：每页个数
+            latitude,  //纬度
+            longitude,  //经度
+            radius：半径 单位：m
+            keyword：搜索关键词
+        } */
+    let param = Object.assign(params, {
+      operation: 'mapPoiNearbySearch'
+    })
+    return this.commandInterfaceWrapper(param)
+  },
+
+  /* ^6.2 当前定位的周边地址  add by lau */
+  requestLocation(params) {
+    /* params =  {
+
+        } */
+    let param = Object.assign(params, {
+      operation: 'requestLocation'
     })
     return this.commandInterfaceWrapper(param)
   },

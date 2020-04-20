@@ -35,6 +35,14 @@
       ></dof-button>
       <dof-button
         class="margin-top-80"
+        text="test页面(test)"
+        type="primary"
+        pattern="plain"
+        size="big"
+        @dofButtonClicked="goToTest"
+      ></dof-button>
+      <dof-button
+        class="margin-top-80"
         text="快速查看"
         type="primary"
         size="big"
@@ -88,6 +96,9 @@ module.exports = {
     },
     alert() {
       this.$alert('world')
+    },
+    goToTest() {
+      this.$push('test.js')
     }
   }
 }

@@ -14,7 +14,7 @@
         <image :src="rightButton" style="height: 32px;width: 32px;"></image>
       </div>
     </dof-minibar>
-    <div class="main-container" :style="borderComp">
+    <div class="main-container">
       <text class="word-text">hello,world</text>
     </div>
   </div>
@@ -36,13 +36,7 @@ export default {
   },
   created() {},
   mounted() {},
-  computed: {
-    borderComp() {
-      return {
-        borderWidth: '2px'
-      }
-    }
-  },
+  computed: {},
   methods: {
     minibarRightButtonClick() {
       this.$reload()
@@ -54,7 +48,5 @@ export default {
 @import 'src/css/dolphinweex.scss';
 .main-container {
   padding: 20px 15px;
-  border-width: 1px;
-  border-color: #267aff;
 }
 </style>

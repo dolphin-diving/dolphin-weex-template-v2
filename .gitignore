@@ -9,7 +9,6 @@
 **/.DS_Store
 /release
 /platforms
-/package-lock.json
 /publish.zip
 /publish
 

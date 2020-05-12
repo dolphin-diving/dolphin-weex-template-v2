@@ -117,8 +117,7 @@ const plugins = [
     }),
     //  文件拷贝插件,将图片和字体拷贝到dist目录
     new copy([
-        {from: `./src/widgets/${project_category_name}/assets/image`, to: `./assets/image`},
-        {from: `./src/widgets/${project_category_name}/assets/lottie`, to: `./assets/lottie`},
+        {from: `./src/widgets/${project_category_name}/assets`, to: `./assets`}
     ]),
 ];
 

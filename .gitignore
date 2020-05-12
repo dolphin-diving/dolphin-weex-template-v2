@@ -9,7 +9,6 @@
 **/.DS_Store
 /release
 /platforms
-/package-lock.json
 /publish.zip
 /publish
 
@@ -21,4 +20,5 @@
 /.temp
 
 /src/widgets/T0x13
+/src/widgets/latest
 /yarn.lock

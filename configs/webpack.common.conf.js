@@ -13,6 +13,14 @@ const vueWeexRouter = helper.rootNode(config.routerWeexDir);
 const webEntry = {};
 const weexEntry = {};
 const project_category_name = process.env.CATE_NAME || 'base';
+const FILE_TYPE = process.env.FILE_TYPE || '\\w'
+const formatFileType = (type) => {
+  let tempArr = type.split(',')
+  let str = tempArr.length > 1 ? tempArr.join('|') : tempArr[0]
+  return new RegExp(str)
+}
+
+let filePattern = formatFileType(FILE_TYPE)
 
 //输出web端入口文件的内容
 const getWebEntryFileContent = (entryPath, vueFilePath, routerB) => {
@@ -78,7 +86,7 @@ const getRouterFile = (dir) => {
 // 根据入口文件生成weex/web端对应的入口文件
 const getEntryFile = (dir) => {
     dir = dir || config.sourceDir;
-    const entrys = glob.sync(`${dir}/${config.entryFilePath}`, { 'nodir': true});
+    const entrys = glob.sync(`${dir}/${config.entryFilePath}`, { 'nodir': true}).filter(entry => filePattern.test(entry));
     entrys.forEach(entry => {
         const basename = entry.split('/');
         const len = basename.length;

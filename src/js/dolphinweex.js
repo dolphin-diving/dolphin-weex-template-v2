@@ -107,6 +107,7 @@ let dolphinweex = {
       }
     })
     Vue.prototype.$native = null
+    Vue.prototype.$bridge = null
     Vue.prototype.$util = Utils
 
     Vue.prototype.$ENV = ENV

@@ -11,7 +11,7 @@
   "scripts": {
     "start": "npm run dev",
     "dev": "npm run clean:all && npm run serve",
-    "serve": "cross-env CATE_NAME=demo webpack-dev-server --env.NODE_ENV=development --progress",
+    "serve": "cross-env CATE_NAME=demo FILE_TYPE= webpack-dev-server --env.NODE_ENV=development --progress",
     "build": "npm run clean:all && cross-env CATE_NAME=demo webpack --env.NODE_ENV=development",
     "build:prod": "npm run clean:all && cross-env CATE_NAME=demo webpack --env.NODE_ENV=production && node configs/publish.js",
     "build:prod:web": "npm run clean:all && cross-env CATE_NAME=demo webpack --env.NODE_ENV=release",
@@ -21,10 +21,11 @@
     "debug": "weex debug"
   },
   "dependencies": {
-    "dolphin-weex-ui": "^0.0.98",
+    "dolphin-native-bridge": "^0.0.8",
+    "dolphin-weex-ui": "^0.1.13",
     "phantom-limb": "0.0.1",
     "postcss-weex": "^1.0.5",
-    "vue": "^2.5.11",
+    "vue": "^2.6.11",
     "vue-router": "^3.0.1",
     "weex-bindingx": "0.0.48",
     "weex-gcanvas": "^0.5.49",

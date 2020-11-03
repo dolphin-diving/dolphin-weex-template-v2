@@ -3,6 +3,7 @@
  */
 const stream = weex.requireModule('stream')
 import { DofMinibar, Core, Utils } from 'dolphin-weex-ui'
+import { Bridge } from 'dolphin-native-bridge'
 import { baseURL, ENV } from './config.js'
 
 let dolphinweex = {
@@ -106,8 +107,8 @@ let dolphinweex = {
         // this.$toast('dolphinweex')
       }
     })
-    Vue.prototype.$native = null
-    Vue.prototype.$bridge = null
+    Vue.prototype.$native = Bridge
+    Vue.prototype.$bridge = Bridge
     Vue.prototype.$util = Utils
 
     Vue.prototype.$ENV = ENV

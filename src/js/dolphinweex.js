@@ -3,7 +3,6 @@
  */
 const stream = weex.requireModule('stream')
 import storageModule from './storage'
-import i18n from './i18n'
 import { DofMinibar, Core, Utils } from 'dolphin-weex-ui'
 import { Bridge } from 'dolphin-native-bridge'
 import { baseURL, ENV } from './config.js'
@@ -112,11 +111,11 @@ let dolphinweex = {
         // 通用钩子
       },
       mounted() {
-        if (this.i18nData) {
-          this.setDeviceLanguage().catch(err => {
-            this.locale = 'en_US'
-          })
-        }
+        // if (this.i18nData) {
+        //   this.setDeviceLanguage().catch(err => {
+        //     this.locale = 'en_US'
+        //   })
+        // }
       },
       methods: {
         async setDeviceLanguage() {
@@ -158,8 +157,6 @@ let dolphinweex = {
     Vue.prototype.$post = that.post
 
     Vue.prototype.$get = that.get
-
-    Vue.prototype.$t = i18n.t
 
     Vue.prototype.$storage = storageModule
   }

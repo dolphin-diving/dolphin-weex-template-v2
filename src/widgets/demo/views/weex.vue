@@ -38,7 +38,7 @@
         text="i18n示例"
         type="primary"
         size="big"
-        @dofButtonClicked="jumpTo('i18n-demo')"
+        @dofButtonClicked="jumpTo('i18n-page')"
       ></dof-button>
       <dof-button
         class="margin-top-80"

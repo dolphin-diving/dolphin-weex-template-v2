@@ -1,0 +1,46 @@
+{
+  "en_US": {
+    "settingTemperature":"setting temperature",
+    "language": "Eglish",
+    "title": "good good study, day day up！",
+    "hello": "hello, world!",
+    "airContainer": {
+      "name": "air conditioner",
+      "detail":{
+        "size": "container size"
+      }
+    },
+    "car": "car | cars",
+    "age": "20 years old",
+    "changeLanguage":"change language"
+  },
+  "zh_CN": {
+    "settingTemperature":"设置温度",
+    "language": "中文",
+    "title": "好好学习，天天向上！",
+    "hello": "你好，世界!",
+    "airContainer": {
+      "name": "空调",
+      "detail":{
+        "size": "空调尺寸"
+      }
+    },
+    "car": "车 | 很多车",
+    "changeLanguage":"语言切换"
+  },
+  "ja_JP": {
+    "settingTemperature":"設定温度",
+    "language": "日本語",
+    "title": "しっかbaiり勉强duし、绝えず向zhi上する",
+    "hello": "こんにちは、世界！",
+    "airContainer": {
+      "name": "言語空调",
+      "detail":{
+        "size": "エアコンのサイズ"
+      }
+    },
+    "car": "車 | 多くの車",
+    "changeLanguage":"言語切り替え"
+
+  }
+}

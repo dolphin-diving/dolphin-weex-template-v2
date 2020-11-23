@@ -31,7 +31,7 @@ const getWebEntryFileContent = (entryPath, vueFilePath, routerB) => {
 new Vue(Vue.util.extend({el: '#root', router}, App));
 router.push('/');
 ` : `
-new Vue(Vue.util.extend({el: '#root'}, App));
+new Vue(Vue.util.extend({el: '#root',i18n}, App));
 `;
     contents += `
 import Vue from 'vue'
@@ -49,7 +49,7 @@ const getWeexEntryFileContent = (entryPath, vueFilePath, routerB) => {
 new Vue(Vue.util.extend({el: '#root', router}, App));
 router.push('/');
 ` : `
-new Vue(Vue.util.extend({el: '#root'}, App));
+new Vue(Vue.util.extend({el: '#root',i18n}, App));
 `;
     return entryContents + lastContents;
 };

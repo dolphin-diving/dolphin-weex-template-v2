@@ -26,6 +26,7 @@
     "phantom-limb": "0.0.1",
     "postcss-weex": "^1.0.5",
     "vue": "^2.6.11",
+    "vue-i18n": "^8.22.1",
     "vue-router": "^3.0.1",
     "weex-bindingx": "0.0.48",
     "weex-gcanvas": "^0.5.49",

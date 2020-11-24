@@ -58,10 +58,9 @@ export default {
     return {
       leftButton: './assets/image/header/back_black@2x.png',
       rightButton: './assets/image/header/refresh.png',
-      word: 'it is time to develop plugins yourself',
+      word: this.$t('welcome.world'),
       lottieData: '',
-      isLottieShow: false,
-      i18nData: lang
+      isLottieShow: false
     }
   },
   created() {},
@@ -73,7 +72,7 @@ export default {
   },
   computed: {
     welcome() {
-      return this.isLottieShow ? 'Welcome to' : 'Welcome to DolphinWeex'
+      return this.isLottieShow ? this.$t('welcome.status1') : this.$t('welcome.status2')
     }
   },
   methods: {

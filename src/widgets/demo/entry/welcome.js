@@ -9,7 +9,7 @@ Vue.use(dolphinweex)
 Vue.use(exceptionReport)
 
 const i18n = new VueI18n({
-  locale: 'zh_CN',
+  locale: 'ja_JP',
   fallbackLocale: 'en_US',
   messages: i18nJson
 })

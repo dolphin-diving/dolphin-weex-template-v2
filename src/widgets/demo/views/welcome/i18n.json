@@ -6,6 +6,11 @@
       "step1": "use dolphin-weex-cli ",
       "step2": "$: dolphin c",
       "step3": "choose sample"
+    },
+    "welcome": {
+      "world": "it is time to develop plugins yourself",
+      "status1": "Welcome to",
+      "status2": "Welcome to DolphinWeex"
     }
   },
   "zh_CN": {
@@ -15,6 +20,25 @@
       "step1": "使用dolphin-weex-cli 脚手架的",
       "step2": "$: dolphin c",
       "step3": "选择 sample"
+    },
+    "welcome": {
+      "world": "开始定制weex插件吧",
+      "status1": "欢迎",
+      "status2": "欢迎使用 DolphinWeex"
+    }
+  },
+  "ja_JP": {
+    "title": "歓迎ページ",
+    "welcome": {
+      "world": "weexプラグインのカスタマイズを開始します",
+      "status1": "歓迎する",
+      "status2": "いらっしゃいませ DolphinWeex"
+    },
+    "cli":{
+      "name":"プラグインの例:サンプルをダウンロード",
+      "step1": "使用dolphin-weex-cli ツール",
+      "step2": "$: dolphin c",
+      "step3": "選択 sample"
     }
   }
 }

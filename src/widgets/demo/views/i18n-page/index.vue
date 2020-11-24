@@ -16,7 +16,9 @@
     </dof-minibar>
     <div class="app-container" :style="{ paddingBottom: fitBottomBar }">
       <scroller class="app-container-scroll-view">
-        <div class="app-container-scroll-view-indicator"></div>
+        <div class="app-container-scroll-view-indicator">
+          <dashboard title="hello"></dashboard>
+        </div>
         <div class="app-container-scroll-view-action-panel">
           <dof-cell
             avatar-icon="http://dolphin-weex-dev.msmartlife.cn/cdn/images/business/other/calorifier_icon_temperature@3x.png"
@@ -68,6 +70,14 @@
             ></dof-switch>
           </dof-cell>
         </div>
+        <div class="app-container-scroll-view-widget">
+          <dof-panel
+            theme="primary"
+            :btn-text="$t('log.more')"
+            :list-data="panelData"
+            @dofBottomBarClicked="checkLogHandler"
+          ></dof-panel>
+        </div>
       </scroller>
       <div class="app-container-bottom-bar">
         <dof-button
@@ -83,10 +93,10 @@
 </template>
 
 <script>
-import { DofMinibar, DofButton, DofCell, DofSwitch, DofIpxBar, Utils } from 'dolphin-weex-ui'
-
+import { DofMinibar, DofButton, DofCell, DofSwitch, DofPanel, DofIpxBar, Utils } from 'dolphin-weex-ui'
+import Dashboard from './dashboard.vue'
 export default {
-  components: { DofMinibar, DofButton, DofCell, DofSwitch, DofIpxBar },
+  components: { DofMinibar, DofButton, DofCell, DofSwitch, DofPanel, DofIpxBar, Dashboard },
   data: () => ({
     deviceName: 'i18n',
     leftButton: './assets/image/header/back_black@2x.png',
@@ -114,12 +124,39 @@ export default {
       }
     },
     languageResponse() {
-      return this.curInd === 0 ? false : true
+      return this.$i18n.locale === 'zh_CN' ? false : true
+    },
+    panelData() {
+      return [
+        [
+          {
+            title: this.$t('log.block1.title'),
+            value: '234',
+            unit: this.$t('log.block1.unit')
+          },
+          {
+            title: this.$t('log.block2.title'),
+            value: '326',
+            unit: this.$t('log.block2.unit')
+          },
+          {
+            title: this.$t('log.block3.title'),
+            value: '520',
+            unit: this.$t('log.block3.unit')
+          }
+        ]
+      ]
     }
   },
   created() {
     this.isIphoneX = Utils.env.isIPhoneX()
+    let that = this
+    setTimeout(() => {
+      that.panelData.splice(0)
+      console.log(this.panelData)
+    }, 1000)
   },
+  mounted() {},
   methods: {
     minibarRightButtonClick() {
       this.$reload()
@@ -127,6 +164,10 @@ export default {
     pickTempreture() {},
     cellClickedHandler() {},
     handleSwitchChange() {},
+    checkLogHandler() {
+      const LOG_URL = 'i18n-log-page.js'
+      this.$bridge.push(LOG_URL)
+    },
     //多语言切换
     changeLangHandler() {
       this.curInd++
@@ -150,6 +191,10 @@ export default {
       &-action-panel {
         padding: 0 32px;
         margin: 40px 0;
+      }
+      &-widget {
+        padding: 0 32px;
+        margin: 0 0 40px 0;
       }
     }
     &-bottom-bar {

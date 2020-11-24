@@ -1,9 +1,13 @@
 {
   "en_US": {
+    "dashboard":{
+      "title": "setting temperature",
+      "value": "middle"
+    },
     "mode": {
       "temperature": {
         "settingTemperature":"setting temperature",
-        "temperatureValue": "60 degrees"
+        "temperatureValue": "60 deg"
       },
       "energy":{
         "energyMode":"enconomical mode",
@@ -14,20 +18,32 @@
         "description":"Increase heating technology to provide more hot water"
       }
     },
-    "language": "Eglish",
-    "title": "good good study, day day up！",
-    "hello": "hello, world!",
-    "airContainer": {
-      "name": "air conditioner",
-      "detail":{
-        "size": "container size"
-      }
+    "log": {
+      "block1":{
+        "title":"Xiaomei has been with you",
+        "unit":"day"
+      },
+      "block2":{
+        "title":"Accumulated power saving",
+        "unit":"degree"
+      },
+      "block3":{
+        "title":"Reducing carbon dioxide",
+        "unit":"ton"
+      },
+      "more": "See more"
     },
+
+    "language": "English",
     "car": "car | cars",
     "age": "20 years old",
     "changeLanguage":"change language"
   },
   "zh_CN": {
+    "dashboard":{
+      "title": "设置温度",
+      "value": "中档"
+    },
     "mode": {
       "temperature": {
         "settingTemperature":"设置温度",
@@ -42,19 +58,30 @@
         "description":"增加加热技术，提供更多热水"
       }
     },
-    "language": "中文",
-    "title": "好好学习，天天向上！",
-    "hello": "你好，世界!",
-    "airContainer": {
-      "name": "空调",
-      "detail":{
-        "size": "空调尺寸"
-      }
+    "log": {
+      "block1":{
+        "title":"小美已经陪伴您",
+        "unit":"天"
+      },
+      "block2":{
+        "title":"累计省用电",
+        "unit":"度"
+      },
+      "block3":{
+        "title":"减少二氧化碳",
+        "unit":"吨"
+      },
+      "more": "查看更多"
     },
+    "language": "中文",
     "car": "车 | 很多车",
     "changeLanguage":"语言切换"
   },
   "ja_JP": {
+    "dashboard":{
+      "title": "設定温度",
+      "value": "中級"
+    },
     "mode": {
       "temperature": {
         "settingTemperature":"設定温度",
@@ -69,15 +96,23 @@
         "description":"加熱技術を追加して、お湯をもっと提供します。"
       }
     },
+    "log": {
+      "block1":{
+        "title":"ヤンクミはもうあなたのそばにいます",
+        "unit":"空"
+      },
+      "block2":{
+        "title":"消費電力を累計する",
+        "unit":"度"
+      },
+      "block3":{
+        "title":"二酸化炭素を減らす",
+        "unit":"トン"
+      },
+      "more": "もっと見る"
+    },
     "language": "日本語",
     "title": "しっかbaiり勉强duし、绝えず向zhi上する",
-    "hello": "こんにちは、世界！",
-    "airContainer": {
-      "name": "言語空调",
-      "detail":{
-        "size": "エアコンのサイズ"
-      }
-    },
     "car": "車 | 多くの車",
     "changeLanguage":"言語切り替え"
 

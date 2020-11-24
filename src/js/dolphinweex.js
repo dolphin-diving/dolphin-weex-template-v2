@@ -111,16 +111,24 @@ let dolphinweex = {
         // 通用钩子
       },
       mounted() {
-        // if (this.i18nData) {
-        //   this.setDeviceLanguage().catch(err => {
-        //     this.locale = 'en_US'
-        //   })
-        // }
+        if (this.$i18n) {
+          this.setDeviceLanguage().catch(err => {
+            this.$i18n.locale = this.locale
+          })
+        }
       },
       methods: {
         async setDeviceLanguage() {
-          let current_locale = await storageModule.getStorage('locale')
-          this.locale = current_locale || 'en_US'
+          let currentLocale = await storageModule.getStorage('locale')
+          this.$i18n.locale = currentLocale || 'en_US'
+          // this.$toast(this.$i18n.locale)
+        }
+      },
+      watch: {
+        '$i18n.locale': {
+          handler(n, o) {
+            this.$storage.setStorage('locale', n)
+          }
         }
       }
     })

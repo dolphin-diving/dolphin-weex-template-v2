@@ -1,0 +1,17 @@
+{
+  "en_US": {
+    "title": "log",
+    "language": "English",
+    "changeLanguage":"change language"
+  },
+  "zh_CN": {
+    "title": "日志",
+    "language": "中文",
+    "changeLanguage":"语言切换"
+  },
+  "ja_JP": {
+    "title": "日誌",
+    "language": "日本語",
+    "changeLanguage":"言語切り替え"
+  }
+}

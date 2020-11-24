@@ -1,8 +1,7 @@
 <template>
   <div class="app">
-    <text>{{ title }}</text>
-    <text>{{ $t('airContainer.name') }}</text>
-    <text>{{ $t('airContainer.detail.size') }}</text>
+    <text>{{ $t('dashboard.title') }}</text>
+    <text>{{ $t('dashboard.value') }}</text>
   </div>
 </template>
 

@@ -1,6 +1,19 @@
 {
   "en_US": {
-    "settingTemperature":"setting temperature",
+    "mode": {
+      "temperature": {
+        "settingTemperature":"setting temperature",
+        "temperatureValue": "60 degrees"
+      },
+      "energy":{
+        "energyMode":"enconomical mode",
+        "description":"One button 45 degrees, no waste of heat"
+      },
+      "capacity":{
+        "capacityTitle": "E+ capacity plus",
+        "description":"Increase heating technology to provide more hot water"
+      }
+    },
     "language": "Eglish",
     "title": "good good study, day day up！",
     "hello": "hello, world!",
@@ -15,7 +28,20 @@
     "changeLanguage":"change language"
   },
   "zh_CN": {
-    "settingTemperature":"设置温度",
+    "mode": {
+      "temperature": {
+        "settingTemperature":"设置温度",
+        "temperatureValue": "60 ℃"
+      },
+      "energy":{
+        "energyMode":"节能模式",
+        "description":"一键45℃，热量不浪费"
+      },
+      "capacity":{
+        "capacityTitle": "E+ 增容",
+        "description":"增加加热技术，提供更多热水"
+      }
+    },
     "language": "中文",
     "title": "好好学习，天天向上！",
     "hello": "你好，世界!",
@@ -29,7 +55,20 @@
     "changeLanguage":"语言切换"
   },
   "ja_JP": {
-    "settingTemperature":"設定温度",
+    "mode": {
+      "temperature": {
+        "settingTemperature":"設定温度",
+        "temperatureValue": "60℃"
+      },
+      "energy":{
+        "energyMode":"省エネモード",
+        "description":"一押し45℃で、カロリーは浪費しません"
+      },
+      "capacity":{
+        "capacityTitle": "E+ 顔をそえる",
+        "description":"加熱技術を追加して、お湯をもっと提供します。"
+      }
+    },
     "language": "日本語",
     "title": "しっかbaiり勉强duし、绝えず向zhi上する",
     "hello": "こんにちは、世界！",

@@ -20,8 +20,8 @@
         <div class="app-container-scroll-view-action-panel">
           <dof-cell
             avatar-icon="http://dolphin-weex-dev.msmartlife.cn/cdn/images/business/other/calorifier_icon_temperature@3x.png"
-            :title="$t('settingTemperature')"
-            right-text="60℃"
+            :title="$t('mode.temperature.settingTemperature')"
+            :right-text="$t('mode.temperature.temperatureValue')"
             :icon-color="theme"
             :has-sub-bottom-border="true"
             :has-arrow="true"
@@ -31,30 +31,32 @@
           ></dof-cell>
           <dof-cell
             avatar-icon="http://dolphin-weex-dev.msmartlife.cn/cdn/images/business/other/calorifier_icon_eco@3x.png"
-            title="节能模式"
-            desc="一键45℃，热量不浪费"
+            :title="$t('mode.energy.energyMode')"
+            :desc="$t('mode.energy.description')"
             :icon-color="theme"
             :has-sub-bottom-border="true"
             :has-arrow="false"
-            :disabled="true"
+            :disabled="false"
+            :special="languageResponse"
             @dofCellClicked="cellClickedHandler"
           >
             <dof-switch
               slot="switch"
               :type="theme_mode"
               :checked="switchValue"
-              :disabled="true"
+              :disabled="false"
               @dof-change="handleSwitchChange({ type: '开关切换' })"
             ></dof-switch>
           </dof-cell>
           <dof-cell
-            title="E+增容"
-            desc="增容加热技术，提供更多热水"
+            :title="$t('mode.capacity.capacityTitle')"
+            :desc="$t('mode.capacity.description')"
             :icon-color="theme"
             avatar-icon="http://dolphin-weex-dev.msmartlife.cn/cdn/images/business/other/calorifier_icon_e+@3x.png"
             :cell-style="bottomBorderRadius"
             :has-arrow="false"
             :disabled="false"
+            :special="languageResponse"
             @dofCellClicked="cellClickedHandler"
           >
             <dof-switch
@@ -110,6 +112,9 @@ export default {
         borderBottomLeftRadius: '16px',
         borderBottomRightRadius: '16px'
       }
+    },
+    languageResponse() {
+      return this.curInd === 0 ? false : true
     }
   },
   created() {

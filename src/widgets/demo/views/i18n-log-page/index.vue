@@ -24,6 +24,7 @@
 
 <script>
 import { DofMinibar, DofButton } from 'dolphin-weex-ui'
+let localeEvent = new BroadcastChannel('localeEvent')
 
 export default {
   components: { DofMinibar, DofButton },
@@ -44,6 +45,7 @@ export default {
       this.$i18n.locale = this.langSet[this.curInd]
       this.$storage.setStorage('locale', this.langSet[this.curInd])
       if (this.curInd === 2) this.curInd = -1
+      this.emitLocaleChangeHandler(this.$i18n.locale)
     }
   }
 }

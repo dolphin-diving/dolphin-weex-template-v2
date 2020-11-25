@@ -150,11 +150,6 @@ export default {
   },
   created() {
     this.isIphoneX = Utils.env.isIPhoneX()
-    let that = this
-    setTimeout(() => {
-      that.panelData.splice(0)
-      console.log(this.panelData)
-    }, 1000)
   },
   mounted() {},
   methods: {

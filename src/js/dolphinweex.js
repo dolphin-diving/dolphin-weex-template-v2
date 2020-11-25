@@ -6,6 +6,7 @@ import storageModule from './storage'
 import { DofMinibar, Core, Utils } from 'dolphin-weex-ui'
 import { Bridge } from 'dolphin-native-bridge'
 import { baseURL, ENV } from './config.js'
+let localeEvent = new BroadcastChannel('localeEvent')
 
 let dolphinweex = {
   /**
@@ -109,6 +110,12 @@ let dolphinweex = {
       }),
       created() {
         // 通用钩子
+        localeEvent.onmessage = event => {
+          let {
+            data: { locale }
+          } = event
+          this.$i18n.locale = locale
+        }
       },
       mounted() {
         if (this.$i18n) {
@@ -122,6 +129,12 @@ let dolphinweex = {
           let currentLocale = await storageModule.getStorage('locale')
           this.$i18n.locale = currentLocale || 'en_US'
           // this.$toast(this.$i18n.locale)
+        },
+        emitLocaleChangeHandler(locale = 'en_US') {
+          localeEvent.postMessage({
+            message: 'language has changed',
+            locale
+          })
         }
       },
       watch: {

@@ -35,6 +35,12 @@ export default {
     langSet: ['zh_CN', 'en_US', 'ja_JP'],
     curInd: 0
   }),
+  mounted() {
+    setTimeout(() => {
+      let locale = this.$i18n.locale
+      this.curInd = this.langSet.findIndex(item => item === locale)
+    }, 20)
+  },
   methods: {
     minibarRightButtonClick() {
       this.$reload()
@@ -43,8 +49,7 @@ export default {
     changeLangHandler() {
       this.curInd++
       this.$i18n.locale = this.langSet[this.curInd]
-      this.$storage.setStorage('locale', this.langSet[this.curInd])
-      if (this.curInd === 2) this.curInd = -1
+      if (this.curInd >= 2) this.curInd = -1
       this.emitLocaleChangeHandler(this.$i18n.locale)
     }
   }

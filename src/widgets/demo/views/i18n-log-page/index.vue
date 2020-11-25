@@ -24,7 +24,6 @@
 
 <script>
 import { DofMinibar, DofButton } from 'dolphin-weex-ui'
-let localeEvent = new BroadcastChannel('localeEvent')
 
 export default {
   components: { DofMinibar, DofButton },

@@ -109,7 +109,7 @@ export default {
   }),
   computed: {
     fitBottomBar() {
-      return this.isIPhoneX ? '236px' : '130px'
+      return this.isIphoneX ? '196px' : '130px'
     },
     topBorderRadius() {
       return {
@@ -183,7 +183,6 @@ export default {
     &-scroll-view {
       flex: 1; //兼容web端
       background-color: $color_background;
-      padding-bottom: 64px;
       &-action-panel {
         padding: 0 32px;
         margin: 40px 0;

@@ -47,9 +47,9 @@ export default {
     },
     //多语言切换
     changeLangHandler() {
+      if (this.curInd >= 2) this.curInd = -1
       this.curInd++
       this.$i18n.locale = this.langSet[this.curInd]
-      if (this.curInd >= 2) this.curInd = -1
       this.emitLocaleChangeHandler(this.$i18n.locale)
     }
   }

@@ -188,6 +188,7 @@ export default {
     &-scroll-view {
       flex: 1; //兼容web端
       background-color: $color_background;
+      padding-bottom: 64px;
       &-action-panel {
         padding: 0 32px;
         margin: 40px 0;
@@ -201,6 +202,8 @@ export default {
       position: absolute;
       bottom: 0;
       background-color: $color_white;
+      border-top-width: 2px;
+      border-color: #f2f2f2;
     }
   }
 }

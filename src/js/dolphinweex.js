@@ -1,5 +1,5 @@
 /**
- * 框架核心方法
+ * 框架基座核心方法
  */
 const stream = weex.requireModule('stream')
 import storageModule from './storage'
@@ -148,35 +148,20 @@ let dolphinweex = {
     Vue.prototype.$native = Bridge
     Vue.prototype.$bridge = Bridge
     Vue.prototype.$util = Utils
-
     Vue.prototype.$ENV = ENV
-
     Vue.prototype.$baseURL = baseURL
-
     Vue.prototype.$alert = Core.alert
-
     Vue.prototype.$toast = Core.toast
-
     Vue.prototype.$reload = Core.reload
-
     Vue.prototype.$confirm = Core.confirm
-
     Vue.prototype.$show = Core.show
-
     Vue.prototype.$showSuccess = Core.showSuccess
-
     Vue.prototype.$showError = Core.showError
-
     Vue.prototype.$hide = Core.hide
-
     Vue.prototype.$getContextPath = Core.getContextPath
-
     Vue.prototype.$push = Core.push
-
     Vue.prototype.$pop = Core.pop
-
     Vue.prototype.$post = that.post
-
     Vue.prototype.$get = that.get
 
     Vue.prototype.$storage = storageModule

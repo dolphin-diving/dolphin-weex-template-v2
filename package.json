@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "dolphin-native-bridge": "^0.0.8",
-    "dolphin-weex-ui": "^0.1.24",
+    "dolphin-weex-ui": "^0.1.34",
     "phantom-limb": "0.0.1",
     "postcss-weex": "^1.0.5",
     "vue": "^2.6.11",

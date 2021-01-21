@@ -92,7 +92,7 @@ module.exports = {
     },
     toast() {
       this.$toast('hello, dolphinWeex')
-      this.$native.hapticFeedback()
+      this.$bridge.hapticFeedback()
     },
     alert() {
       this.$alert('world')

@@ -57,6 +57,10 @@ const weexConfig = webpackMerge(commonConfig[1], {
     ]
 })
 
+if(process.env.analyzer) {
+  const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+  weexConfig.plugins.push(new BundleAnalyzerPlugin())
+}
 /**
 * Webpack configuration for web.
 */

@@ -1,28 +1,22 @@
-#dolphin-weex-template-v 升级模版 version 2
+#dolphin-weex-template upgrade template V2
 
-> Weex
+> Weex template
 
-开放平台插件开发文档：[http://xx.com](http://)
+## Build Setup
 
-## 沟通交流
+``` bash
+# install dependencies
+cnpm install 或者 npm install
 
-**我们的GitHub仓库**
+# serve with hot reload at localhost:8080
+npm start 或 npm run dev
 
-weex组件库 [https://github.com/xx/xx](https://github.com/)
+# build for production with minification
+npm run build
 
-### 运行工程
+# build for production and view the bundle analyzer report
+npm run build:prod
 
-创建的工程是标准的webpack工程，运行该工程有两种方式：
-
-**使用命令行运行**
-安装：
-```bash
-cnpm install
 ```
 
-启动：
-```bash
-npm start
-```
-
-更多开发帮助，请查看[http://xxx.com/xxx/](http://xxx.com/xxx/)
+For a detailed explanation on how things work, check out the [guide](http://dolphin-weex-dev.msmartlife.cn/) 

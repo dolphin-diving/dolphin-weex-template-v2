@@ -2,7 +2,6 @@
  * 框架基座核心方法
  */
 const stream = weex.requireModule('stream')
-import storageModule from './storage'
 import { DofMinibar, Core, Utils } from 'dolphin-weex-ui'
 import { Bridge } from 'dolphin-native-bridge'
 import { baseURL, ENV } from './config.js'
@@ -163,8 +162,6 @@ let dolphinweex = {
     Vue.prototype.$pop = Core.pop
     Vue.prototype.$post = that.post
     Vue.prototype.$get = that.get
-
-    Vue.prototype.$storage = storageModule
   }
 }
 

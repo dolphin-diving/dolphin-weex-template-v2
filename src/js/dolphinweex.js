@@ -5,7 +5,6 @@ const stream = weex.requireModule('stream')
 import { DofMinibar, Core, Utils } from 'dolphin-weex-ui'
 import { Bridge } from 'dolphin-native-bridge'
 import { baseURL, ENV } from './config.js'
-
 let dolphinweex = {
   /**
    * 发送GET请求
@@ -121,8 +120,9 @@ let dolphinweex = {
     Vue.prototype.$showError = Core.showError
     Vue.prototype.$hide = Core.hide
     Vue.prototype.$getContextPath = Core.getContextPath
-    Vue.prototype.$push = Core.push
-    Vue.prototype.$pop = Core.pop
+    Vue.prototype.$push = Bridge.push
+    Vue.prototype.$pop = Bridge.pop
+    Vue.prototype.$storage = Core.storage
     Vue.prototype.$post = that.post
     Vue.prototype.$get = that.get
   }

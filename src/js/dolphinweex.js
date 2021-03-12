@@ -158,8 +158,9 @@ let dolphinweex = {
     Vue.prototype.$showError = Core.showError
     Vue.prototype.$hide = Core.hide
     Vue.prototype.$getContextPath = Core.getContextPath
-    Vue.prototype.$push = Core.push
-    Vue.prototype.$pop = Core.pop
+    Vue.prototype.$push = Bridge.push
+    Vue.prototype.$pop = Bridge.pop
+    Vue.prototype.$storage = Core.storage
     Vue.prototype.$post = that.post
     Vue.prototype.$get = that.get
   }

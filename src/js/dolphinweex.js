@@ -98,6 +98,7 @@ let dolphinweex = {
   },
   install(Vue, options) {
     let that = dolphinweex
+    let Bus = new Vue()
     Vue.mixin({
       components: {
         'dof-minibar': DofMinibar
@@ -125,6 +126,7 @@ let dolphinweex = {
     Vue.prototype.$storage = Core.storage
     Vue.prototype.$post = that.post
     Vue.prototype.$get = that.get
+    Vue.prototype.$bus = Bus
   }
 }
 

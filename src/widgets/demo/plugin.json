@@ -1,0 +1,13 @@
+{
+  "name":"智能灯",
+  "version": "0.0.1",
+  "description": "一款基于weex技术开发的智能灯具美居插件",
+  "author":"zoiew",
+  "enterpriseCode":"0000",
+  "type":"model",
+  "categoryCode":"0x13",
+  "model":["M2248LED","MSBE-VA021"],
+  "appNumver":"900",
+  "appVersion":"6.1.0",
+  "lastUpdated":"20200519"
+}

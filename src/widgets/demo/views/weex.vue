@@ -82,7 +82,7 @@ module.exports = {
     minibarRightButtonClick() {
       this.$reload()
     },
-    toast() {
+    async toast() {
       this.$toast('hello, dolphinWeex')
       this.$bridge.hapticFeedback()
     },

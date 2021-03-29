@@ -85,8 +85,18 @@ module.exports = {
       this.$toast('hello, dolphinWeex')
       this.$bridge.hapticFeedback()
     },
-    alert() {
-      this.$alert('world')
+    async alert() {
+      // let url = '/v1/iot/open/skill/delegate' // 美居云云对接第三方接口地址，查阅美居云端的接口文档获取地址即可
+      // let params = {
+      //   plugin_version: '5.12.0.2_20191111', //插件的版本，根据实际情况自定义，app版本和日期组合
+      //   namespace: 'ApplianceState', //查询：ApplianceState，控制： ApplianceControl
+      //   payload: {
+      //     applianceCode: '-10032' //xxx为设备的deviceId,通过getDeviceInfo接口获取
+      //   }
+      // }
+      // let res = await this.$bridge.sendCloudRequest(url, params)
+      let res = await this.$bridge.getDeviceInfo()
+      this.$alert(res)
     }
   }
 }

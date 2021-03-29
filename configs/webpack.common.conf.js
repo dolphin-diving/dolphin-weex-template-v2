@@ -126,9 +126,22 @@ const plugins = [
     //  文件拷贝插件,将图片和字体拷贝到dist目录
     new copy([
         {from: `./src/widgets/${project_category_name}/assets`, to: `./assets`}
-    ]),
+    ])
 ];
 
+/**
+ *copy 自定义的配置文件
+ * @param {*} target_file
+ */
+const diyFileCheck = (target_file) => {
+  target_file = target_file || 'setting.json';
+  let dir = `./src/widgets/${project_category_name}/${target_file}`
+  const files = glob.sync(dir,{ 'nodir': true})
+  if(files.length === 1) {
+    plugins.push(new copy([{from: `./src/widgets/${project_category_name}/${target_file}`, to: `./`}]))
+  }
+}
+diyFileCheck('plugin.json')
 
 // 公共配置
 const getBaseConfig = () => ({

@@ -16,7 +16,7 @@
       </div>
     </dof-minibar>
     <div class="center margin-top-80">
-      <dof-image src="/assets/image/logo.png" width="150px" height="150px"></dof-image>
+      <image class="logo" src="./assets/image/logo.png"></image>
       <text class="h2">{{ title }}</text>
       <text class="h4 margin-top-40 margin-bottom-20">{{ subTitle }}</text>
       <dof-button
@@ -47,15 +47,14 @@
   </div>
 </template>
 <script>
-import { DofMinibar, DofImage, DofButton } from 'dolphin-weex-ui'
+import { DofMinibar, DofButton } from 'dolphin-weex-ui'
 
 const globalEvent = weex.requireModule('globalEvent')
 
 module.exports = {
   components: {
     DofMinibar,
-    DofButton,
-    DofImage
+    DofButton
   },
   data: () => ({
     name: 'home',
@@ -95,6 +94,10 @@ module.exports = {
 // <style lang="scss" src="src/css/dolphinweex.scss"></style>
 
 <style scoped>
+.logo {
+  width: 150px;
+  height: 150px;
+}
 .footer {
   position: absolute;
   bottom: 10px;

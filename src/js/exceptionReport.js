@@ -25,7 +25,9 @@ function errorHandler(err, vm, info) {
     Bridge.reportError(errorMessage).then(res => {
       // Bridge.showToast(res)
     })
-  } catch (error) {}
+  } catch (error) {
+    console.error(error)
+  }
 }
 /**
  *

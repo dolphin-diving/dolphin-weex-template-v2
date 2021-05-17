@@ -19,6 +19,7 @@
     "clean:all": "rimraf ./.temp && rimraf ./dist && rimraf ./release && rimraf ./publish && rimraf ./publish.zip",
     "lint": "eslint --ext .js,.vue src",
     "lint:fix": "eslint --ext .js,.vue src --fix . && echo 'Lint complete.'",
+    "lint:report": "eslint --ext .js,.vue src -f codeframe > report.txt",
     "debug": "weex debug"
   },
   "dependencies": {

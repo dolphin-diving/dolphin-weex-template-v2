@@ -18,6 +18,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 commonConfig[1].module.rules[0].exclude = config.excludeModuleReg;
 commonConfig[1].module.rules[1].exclude = config.excludeModuleReg;
 const weexConfig = webpackMerge(commonConfig[1], {
+  devtool: '#source-map',
     /*
      * Add additional plugins to the compiler.
      *
@@ -48,7 +49,7 @@ const weexConfig = webpackMerge(commonConfig[1], {
                 output: { comments: false },
                 compress: { warnings: false }
             },
-            sourceMap: false,
+            sourceMap: true,
             cache: true,
             parallel: os.cpus().length * 2
           }),

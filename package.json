@@ -19,11 +19,12 @@
     "clean:all": "rimraf ./.temp && rimraf ./dist && rimraf ./release && rimraf ./publish && rimraf ./publish.zip",
     "lint": "eslint --ext .js,.vue src",
     "lint:fix": "eslint --ext .js,.vue src --fix . && echo 'Lint complete.'",
+    "lint:report": "eslint --ext .js,.vue src -f codeframe > report.txt",
     "debug": "weex debug"
   },
   "dependencies": {
-    "dolphin-native-bridge": "0.0.11",
-    "dolphin-weex-ui": "^0.1.45",
+    "dolphin-native-bridge": "^0.1.5",
+    "dolphin-weex-ui": "^0.2.5",
     "phantom-limb": "0.0.1",
     "postcss-weex": "^1.0.5",
     "vue": "^2.6.11",

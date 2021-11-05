@@ -134,7 +134,8 @@ const plugins = [
     }),
     //  文件拷贝插件,将图片和字体拷贝到dist目录
     new copy([
-        {from: `./src/widgets/${project_category_name}/assets`, to: `./assets`}
+        {from: `./src/widgets/${project_category_name}/assets`, to: `./assets`},
+        {from: './.build_temp/copy', to: `./` } 
     ]),
 ];
 
@@ -196,9 +197,14 @@ webConfig.entry = Object.assign(
     Optimize.getOptimizeEntrys(weexEntry, project_category_name, { 
         hasFolder: false,
         add_template: `
-            import Vue from 'vue'
-            import weex from 'weex-vue-render'
-            weex.init(Vue)
+import Vue from 'vue'
+import weex from 'weex-vue-render'
+weex.init(Vue)
+
+import dolphinweex from 'src/js/dolphinweex.js'
+import exceptionReport from '@/js/exceptionReport.js'
+Vue.use(dolphinweex)
+Vue.use(exceptionReport)
         `,
         isWebMode: true
     }),
@@ -233,7 +239,15 @@ webConfig.module.rules[1].use.push(
 
 // Config for compile jsbundle for native.
 const weexConfig = getBaseConfig();
-weexConfig.entry = Optimize.getOptimizeEntrys(weexEntry, project_category_name, { hasFolder: false });
+weexConfig.entry = Optimize.getOptimizeEntrys(weexEntry, project_category_name, { 
+    hasFolder: false,
+    add_template: `
+import dolphinweex from 'src/js/dolphinweex.js'
+import exceptionReport from '@/js/exceptionReport.js'
+Vue.use(dolphinweex)
+Vue.use(exceptionReport)
+`
+});
 weexConfig.output.filename = '[name].js';
 weexConfig.module.rules[1].use.push(
     {

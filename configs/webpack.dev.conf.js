@@ -37,7 +37,19 @@ const postMessageToOpenPage = entry => {
     openpage += `?page=${entrys[0]}.js`;
   }
   if (entrys.length > 1) {
-    openpage += `&entrys=${entrys.join("|")}`;
+    let new_entrys = []
+    if (global.weex_optimize) {
+      const pageMapping = global.weex_optimize._pageMapping; 
+
+      Object.keys(pageMapping).map(key => { 
+        const paths = pageMapping[key]
+        paths.map(path=>{
+          new_entrys.push(`${path.__bh_name}--${key}`)
+        })
+      })   
+    }
+
+    openpage += `&entrys=${new_entrys.join("|")}`;
   }
   openpage = `${openpage}&cate_name=${project_category_name}`;
   return openpage;

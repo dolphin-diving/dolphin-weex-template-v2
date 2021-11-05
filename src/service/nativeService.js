@@ -104,7 +104,9 @@ export default {
           }
           url = weexPathArray.join('/') + pathArray.join('/')
         } else {
-          url = weexPath + path
+
+          url = Vue.$getOptimizeUrl(weexPath, path)
+          // url = weexPath + path
         }
 
         this.runGo(url, options)

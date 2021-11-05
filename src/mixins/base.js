@@ -58,6 +58,9 @@ export default {
     }
   },
   created() {
+    // 重新覆盖 srcFileName 路径
+    this.srcFileName = Vue.$getSrcFileName()
+
     console.log('created')
     //若isMixinCreated为false, 则不继承
     if (!this.isMixinCreated) return

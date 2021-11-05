@@ -14,6 +14,11 @@ const webEntry = {};
 const weexEntry = {};
 const project_category_name = process.env.CATE_NAME || 'base';
 const FILE_TYPE = process.env.FILE_TYPE || '\\w'
+
+/// optimize weex
+const Optimize = require('midea-optimize')
+const MideaSourceMapPlugin = require('midea-sourcemap-plugin')
+
 const formatFileType = (type) => {
   let tempArr = type.split(',')
   let str = tempArr.length > 1 ? tempArr.join('|') : tempArr[0]
@@ -113,6 +118,10 @@ getEntryFile();
  * Plugins for webpack configuration.
  */
 const plugins = [
+    /**
+     * check source-map file exit in dist/project/
+     */
+    new MideaSourceMapPlugin(),
     /*
      * Plugin: BannerPlugin
      * Description: Adds a banner to the top of each generated chunk.
@@ -164,6 +173,14 @@ const getBaseConfig = () => ({
                 test: /\.vue(\?[^?]+)?$/,
                 use: [],
                 exclude: config.excludeModuleReg
+            },
+            {
+              test: /\.(js|vue)$/,
+              loader: 'midea-optimizelint-loader',
+              options:{
+                res_match_regs: /.png|.jpeg|.jpg|.apng|.gif/g,
+                mode: 'warn' // warn or error
+              }
             }
         ]
     },
@@ -175,9 +192,20 @@ const getBaseConfig = () => ({
 
 // Config for compile jsbundle for web.
 const webConfig = getBaseConfig();
-webConfig.entry = Object.assign(webEntry, {
-    'vendor': [path.resolve('node_modules/phantom-limb/index.js')]
-});
+webConfig.entry = Object.assign(
+    Optimize.getOptimizeEntrys(weexEntry, project_category_name, { 
+        hasFolder: false,
+        add_template: `
+            import Vue from 'vue'
+            import weex from 'weex-vue-render'
+            weex.init(Vue)
+        `,
+        isWebMode: true
+    }),
+    {
+        'vendor': [path.resolve('node_modules/phantom-limb/index.js')]
+    }
+);
 webConfig.output.path = helper.rootNode(`/dist/${project_category_name}_web`);
 webConfig.output.filename = '[name].web.js';
 webConfig.module.rules[1].use.push(
@@ -205,7 +233,7 @@ webConfig.module.rules[1].use.push(
 
 // Config for compile jsbundle for native.
 const weexConfig = getBaseConfig();
-weexConfig.entry = weexEntry;
+weexConfig.entry = Optimize.getOptimizeEntrys(weexEntry, project_category_name, { hasFolder: false });
 weexConfig.output.filename = '[name].js';
 weexConfig.module.rules[1].use.push(
     {

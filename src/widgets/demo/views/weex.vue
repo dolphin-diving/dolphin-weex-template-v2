@@ -48,10 +48,12 @@
 </template>
 <script>
 import { DofMinibar, DofButton } from 'dolphin-weex-ui'
+import base from 'src/mixins/base.js'
 
 const globalEvent = weex.requireModule('globalEvent')
 
 module.exports = {
+  mixins: [base],
   components: {
     DofMinibar,
     DofButton
@@ -74,8 +76,8 @@ module.exports = {
   },
   methods: {
     jumpTo() {
-      let url = 'welcome.js'
-      this.$push(url)
+      let url = 'welcome'
+      this.goTo(url)
     },
     minibarLeftButtonClick() {},
     minibarRightButtonClick() {

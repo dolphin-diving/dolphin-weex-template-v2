@@ -104,9 +104,7 @@ export default {
           }
           url = weexPathArray.join('/') + pathArray.join('/')
         } else {
-
-          url = Vue.$getOptimizeUrl(weexPath, path)
-          // url = weexPath + path
+          url = weexPath + path
         }
 
         this.runGo(url, options)
@@ -129,13 +127,15 @@ export default {
         // } else {
         //   url = weexPath + path  
         // }
-        if(weex.config.env.platform == 'iOS') {
-          url = weexPath + path
+        if(weex.config.env.platform == 'iOS') {  
+          // url = weexPath + path
+          url = Vue.$getOptimizeUrl(weexPath, path)
         } else {
           let weexPathArray = weexPath.indexOf('?') ? weexPath.slice(0,weexPath.indexOf('?')).split('/').slice(0,-1) : weexPath.split('/').slice(0,-1)
-          let pathArray = path.split('/')
-          url = weexPathArray.join('/')+ '/' + pathArray.join('/')
-          // mm.alert({ message: JSON.stringify(url), duration: 5 })
+          // let pathArray = path.split('/')
+          // url = weexPathArray.join('/')+ '/' + pathArray.join('/')
+
+          url = Vue.$getOptimizeUrl(weexPathArray.join('/')+ '/', path)
         }
 
         if (url.indexOf('?') != -1) {
@@ -145,7 +145,7 @@ export default {
         }
         this.runGo(url, options)
       })
-    } else {
+    } else { 
       //PC网页调试跳转
       location.href = location.origin + location.pathname + '?path=' + path.replace('?', '&')
     }

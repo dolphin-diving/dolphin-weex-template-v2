@@ -85,7 +85,7 @@
         $pages.innerHTML = contents;
       }
       var host = window.location.host;
-      debugger
+      
       createQRCode(`http://${host}/dist/${cate_name}/${d_page || 'index.js'}`)
       console.log('扫码地址：'+ `http://${host}/dist/${cate_name}/${d_page || 'index.js'}`)
     })();

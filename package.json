@@ -65,7 +65,7 @@
     "ip": "^1.1.5",
     "mockjs": "^1.0.1-beta3",
     "node-notifier": "^5.1.2",
-    "node-sass": "^4.9.3",
+    "sass": "^1.58.3",
     "portfinder": "^1.0.13",
     "prettier": "^1.18.2",
     "raw-loader": "^0.5.1",

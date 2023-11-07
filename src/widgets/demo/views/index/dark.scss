@@ -1,0 +1,16 @@
+@import 'src/css/_dark.scss';
+/* dark风格 */
+
+@media screen and (weex-theme: dark) {
+    .wrapper {
+      background-color: $color_background_base;
+    }
+  
+    .card {
+      background-color: $color_background_secondary;
+    }
+  
+    .label {
+      color: $color_text_regular;
+    }
+}

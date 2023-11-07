@@ -1,0 +1,43 @@
+@import 'src/css/_theme.scss';
+
+.wrapper {
+  background-color: $color_background_base;
+}
+
+.margin-top-80 {
+  margin-top: 80px;
+}
+
+.margin-top-40 {
+  margin-top: 40px;
+}
+
+.margin-bottom-20 {
+  margin-bottom: 20px;
+}
+.margin-bottom-30 {
+  margin-bottom: 30px;
+}
+.center {
+  align-items: center;
+  flex-direction: column;
+}
+.card {
+  background-color: $color_background_secondary;
+  width: 686px;
+  padding-left: 32px;
+  border-radius: 32px;
+  margin-top: 20px;
+}
+.cell {
+  padding-right: 32px;
+  height: 110px;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+}
+.label {
+  font-size: 28px;
+  color: $color_text_regular;
+  width: 686px;
+}

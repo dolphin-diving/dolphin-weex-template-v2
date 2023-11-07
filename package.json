@@ -23,8 +23,8 @@
     "debug": "weex debug"
   },
   "dependencies": {
-    "dolphin-native-bridge": "^0.1.7",
-    "dolphin-weex-ui": "^0.2.10",
+    "dolphin-native-bridge": "^0.2.9",
+    "dolphin-weex-ui": "^1.1.8",
     "phantom-limb": "0.0.1",
     "postcss-weex": "^1.0.5",
     "vue": "^2.6.11",
@@ -65,7 +65,7 @@
     "ip": "^1.1.5",
     "mockjs": "^1.0.1-beta3",
     "node-notifier": "^5.1.2",
-    "node-sass": "^4.9.3",
+    "sass": "^1.58.3",
     "portfinder": "^1.0.13",
     "prettier": "^1.18.2",
     "raw-loader": "^0.5.1",

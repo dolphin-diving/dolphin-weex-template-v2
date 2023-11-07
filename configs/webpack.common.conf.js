@@ -129,6 +129,15 @@ const plugins = [
     ])
 ];
 
+// 集成weex 一键换肤工具
+const WeexThemePlugin = require('@dolphinweex/weex-theme/lib/plugin')
+plugins.push(
+  new WeexThemePlugin({
+    themes: ['light', 'dark', 'colmo'],
+    default: 'light'
+  })
+)
+
 /**
  *copy 自定义的配置文件
  * @param {*} target_file
@@ -222,7 +231,7 @@ weexConfig.entry = weexEntry;
 weexConfig.output.filename = '[name].js';
 weexConfig.module.rules[1].use.push(
     {
-        loader: 'weex-loader',
+        loader: '@dolphinweex/weex-loader',  //weex-loader 替换为 @dolphinweex/weex-loader
         options: Object.assign(vueLoaderConfig({useVue: false}),{
             postcss:[
               //让weex支持css的简写，如border,padding
